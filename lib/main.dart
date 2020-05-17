@@ -6,6 +6,7 @@ import 'package:farmers_reference/category/main.dart';
 
 void main() {
   runApp(CupertinoApp(
+    theme: CupertinoThemeData(textTheme: CupertinoTextThemeData(primaryColor: Colors.brown)),
     home:Boot(), // becomes the route named '/'
     routes: <String, WidgetBuilder> {
       '/boot': (BuildContext context) => Boot(),
