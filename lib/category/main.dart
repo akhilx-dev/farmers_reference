@@ -1,7 +1,7 @@
 import 'package:farmers_reference/utils/wrapper.dart';
 import 'package:flutter/material.dart';
 
-main(context){
+main(context) {
   return Scaffold(
     body: Center(
       child: Column(
@@ -28,12 +28,10 @@ main(context){
 }
 
 class Category extends StatelessWidget {
-
-  final String arguments;
-  const Category({Key key, this.arguments}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return Wrapper.wrap(context, main(context),"Category");
+    final routes =
+        ModalRoute.of(context).settings.arguments as Map<String, String>;
+    return Wrapper.wrap(context, main(context), routes["category"]);
   }
 }

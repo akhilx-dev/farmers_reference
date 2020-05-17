@@ -2,7 +2,7 @@ import 'package:farmers_reference/utils/wrapper.dart';
 import 'package:flutter/material.dart';
 
 main(context){
-  List items = List<String>.generate(10000, (i) => "Item $i");
+  final items = ["Agriculture","Animal Husbandary","Fisheries","Others"];
   return Scaffold(
     body: GridView.builder(
       gridDelegate:
@@ -16,7 +16,9 @@ main(context){
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               InkWell(
-                  onTap: () => {Navigator.of(context).pushNamed('/category')},
+                  onTap: () => {Navigator.of(context).pushNamed('/category',arguments: {
+                    "category":items[index]
+                  })},
                   child: CircleAvatar(
                     radius: 60.0,
                     backgroundImage:
@@ -30,7 +32,7 @@ main(context){
                         Navigator.of(context).pushNamed('/category',
                             arguments: "Data passed in")
                       },
-                      child: Text("Category",
+                      child: Text(items[index],
                           style: TextStyle(
                               fontSize: 16.0,
                               color: Colors.brown,
