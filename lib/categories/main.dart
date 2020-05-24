@@ -2,7 +2,7 @@ import 'package:farmers_reference/utils/wrapper.dart';
 import 'package:flutter/material.dart';
 
 main(context){
-  final items = ["Agriculture","Animal Husbandary","Fisheries","Others"];
+  final List<Map<String, dynamic>> items = [{"category":"Agriculture","categories":["Cereals","Tuber Crops","Plantation Crops","Spices","Vegetables","Fruit Crops","Ornamental Crops","Medicinal Plants","Pulses","Oil Seeds","Cash Crops","Forage Crops"]}];
   return Scaffold(
     body: GridView.builder(
       gridDelegate:
@@ -16,9 +16,12 @@ main(context){
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               InkWell(
-                  onTap: () => {Navigator.of(context).pushNamed('/category',arguments: {
-                    "category":items[index]
-                  })},
+                  onTap: () => {
+                    Navigator.of(context).pushNamed('/category',arguments: {
+                    "category":items[index]['category'],
+                    "categories":items[index]['categories']
+                  })
+                  },
                   child: CircleAvatar(
                     radius: 60.0,
                     backgroundImage:
@@ -32,7 +35,7 @@ main(context){
                         Navigator.of(context).pushNamed('/category',
                             arguments: "Data passed in")
                       },
-                      child: Text(items[index],
+                      child: Text(items[index]["category"],
                           style: TextStyle(
                               fontSize: 16.0,
                               color: Colors.brown,
